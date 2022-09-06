@@ -3,6 +3,12 @@ import React, { useState } from "react";
 export default function FlavorForm() {
   const [value, setValue] = useState("");
   const [valueRadio, setValueRadio] = useState("");
+  const [other, setOther] = useState(false);
+
+  const handleOther = () => {
+    setOther(!other);
+  };
+
   return (
     <div className="App">
       <div>
@@ -27,10 +33,16 @@ export default function FlavorForm() {
           </li>
         </ul>
       </div>
-
       <input value={value} onChange={(e) => setValue(e.target.value)} />
       <p>{value}</p>
       <p>valeur de radio {valueRadio}</p>
+      <button onClick={handleOther}>yess</button>
+      {other && (
+        <>
+          <p>{value}</p>
+          <p>valeur de radio {valueRadio}</p>
+        </>
+      )}
     </div>
   );
 }
